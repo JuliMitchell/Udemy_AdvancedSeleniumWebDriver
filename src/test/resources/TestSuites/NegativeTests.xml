@@ -12,7 +12,7 @@
 			</class>
 		</classes>
 	</test>
-	
+	<!--
 	<test name="NegativeUsernameTest-FF">
 		<parameter name="username" value="incorrectUsername"></parameter>
 		<parameter name="password" value="SuperSecretPassword!"></parameter>
@@ -23,7 +23,7 @@
 			</class>
 		</classes>
 	</test>
-	
+	-->
 	<test name="NegativePasswordTest-CH">
 		<parameter name="username" value="tomsmith"></parameter>
 		<parameter name="password" value="incorrectPassword"></parameter>
@@ -34,7 +34,7 @@
 			</class>
 		</classes>
 	</test>
-	
+	<!--
 	<test name="NegativePasswordTest-FF">
 		<parameter name="username" value="tomsmith"></parameter>
 		<parameter name="password" value="incorrectPassword"></parameter>
@@ -45,5 +45,5 @@
 			</class>
 		</classes>
 	</test>
-
+	-->
 </suite>
