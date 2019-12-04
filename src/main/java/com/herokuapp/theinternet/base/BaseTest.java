@@ -10,7 +10,7 @@ public class BaseTest {
     public static WebDriver driver;
 
     @Parameters({ "browser" })
-    @BeforeTest
+    @BeforeMethod(alwaysRun = true)
     public void setUp(@Optional("chrome") String browser) {
         // Create driver
         System.out.println("Create driver: " + browser);
@@ -36,7 +36,7 @@ public class BaseTest {
     }
 
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
         System.out.println("Close driver");
         // Close browser
