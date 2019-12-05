@@ -1,7 +1,5 @@
 package com.herokuapp.theinternet.pages;
 
-import com.herokuapp.theinternet.base.BaseTest;
-import org.apache.commons.logging.Log;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,13 +16,13 @@ public class MainPage extends BasePage {
 
     public void openPage(){
         log.info("Opening page: " + url);
-        driver.get(url);
+        openUrl(url);
         log.info("Page opened!");
     }
 
     public LoginPage clickFormAuthenticationLink(){
         log.info("Clicking Form Authentication link on Main Page");
-        driver.findElement(formAuthenticationLinkLocator).click();
+        click(formAuthenticationLinkLocator);
         return new LoginPage(driver, log);
     }
 

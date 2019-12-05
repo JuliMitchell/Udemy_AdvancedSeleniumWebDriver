@@ -17,9 +17,9 @@ public class LoginPage extends BasePage{
 
     public SecureAreaPage logIn(String username, String password){
         log.info("Executing logIn with username [" + username + "] and password [" + password + "]");
-        driver.findElement(usernameLocator).sendKeys(username);
-        driver.findElement(passwordLocator).sendKeys(password);
-        driver.findElement(loginButtonLocator).click();
+        type(usernameLocator, username);
+        type(passwordLocator, password);
+        click(loginButtonLocator);
         return new SecureAreaPage(driver, log);
     }
 }
