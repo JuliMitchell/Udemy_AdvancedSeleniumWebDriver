@@ -10,6 +10,7 @@ public class LoginPage extends BasePage{
     private By usernameLocator = By.id("username");
     private By passwordLocator = By.id("password");
     private By loginButtonLocator = By.className("radius");
+    private By errorMessageLocator = By.id("flash");
 
     public LoginPage(WebDriver driver, Logger log){
         super(driver, log);
@@ -21,5 +22,16 @@ public class LoginPage extends BasePage{
         type(passwordLocator, password);
         click(loginButtonLocator);
         return new SecureAreaPage(driver, log);
+    }
+
+    public void negativeLogIn(String username, String password){
+        log.info("Executing negativeLogIn with username [" + username + "] and password [" + password + "]");
+        type(usernameLocator, username);
+        type(passwordLocator, password);
+        click(loginButtonLocator);
+    }
+
+    public String getErrorMessage(){
+        return find(errorMessageLocator).getText();
     }
 }

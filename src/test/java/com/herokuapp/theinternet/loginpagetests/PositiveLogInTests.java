@@ -28,7 +28,7 @@ public class PositiveLogInTests extends TestUtilities {
 
 		// verifications
 		// new url
-		Assert.assertEquals(driver.getCurrentUrl(), secureAreaPage.getUrl());
+		Assert.assertEquals(secureAreaPage.getBrowserUrl(), secureAreaPage.getUrl());
 
 		// log out button is visible
 		Assert.assertTrue(secureAreaPage.isLogOutButtonVisible(),

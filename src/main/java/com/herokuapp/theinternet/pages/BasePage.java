@@ -56,4 +56,8 @@ public class BasePage {
             attempts++;
         }
     }
+
+    public String getBrowserUrl(){
+        return driver.getCurrentUrl();
+    }
 }
