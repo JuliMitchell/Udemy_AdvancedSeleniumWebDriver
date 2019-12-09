@@ -8,21 +8,35 @@ import org.openqa.selenium.WebDriver;
 public class JSAlertPage extends BasePage {
 
     private By jsAlertButtonLocator = By.xpath("//button[text() = 'Click for JS Alert']");
+    private By jsConfirmButtonLocator = By.xpath("//button[text() = 'Click for JS Confirm']");
     private By resultTextLocator = By.id("result");
 
     public JSAlertPage(WebDriver driver, Logger log){
         super(driver, log);
     }
 
+    //Click buttons
     public void clickJSAlert(){
         log.info("Clicking 'Click for JS Alert' button on JavaScript Alerts page");
         click(jsAlertButtonLocator);
     }
 
+    public void clickJSConfirm(){
+        log.info("Clicking 'Click for JS Confirm' button on JavaScript Alerts page");
+        click(jsConfirmButtonLocator);
+    }
+
+    //Alert actions
     public void acceptAlert(){
         log.info("Accepting alert.");
         Alert alert = switchToAlert();
         alert.accept();
+    }
+
+    public void rejectAlert(){
+        log.info("Rejecting alert");
+        Alert alert = switchToAlert();
+        alert.dismiss();
     }
 
     public String getAlertText(){
