@@ -27,6 +27,7 @@ public class NegativeLogInTests extends BaseTest {
 		loginPage.negativeLogIn(username, password);
 
 		// Verification
+		loginPage.waitForErrorMessage();
 		String actualErrorMessage = loginPage.getErrorMessage();
 		Assert.assertTrue(actualErrorMessage.contains(expectedErrorMessage),
 				"actualErrorMessage does not contain expectedErrorMessage\nexpectedErrorMessage: "

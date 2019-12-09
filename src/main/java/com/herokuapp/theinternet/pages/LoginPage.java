@@ -31,6 +31,10 @@ public class LoginPage extends BasePage{
         click(loginButtonLocator);
     }
 
+    public void waitForErrorMessage(){
+        waitForVisibilityOf(errorMessageLocator, 5);
+    }
+
     public String getErrorMessage(){
         return find(errorMessageLocator).getText();
     }

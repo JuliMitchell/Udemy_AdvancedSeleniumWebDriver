@@ -44,7 +44,7 @@ public class BasePage {
         wait.until(condition);
     }
 
-    private void waitForVisibilityOf(By locator, Integer... timeOutSEC){
+    public void waitForVisibilityOf(By locator, Integer... timeOutSEC){
         int attempts = 0;
         while(attempts < 2){
             try {
