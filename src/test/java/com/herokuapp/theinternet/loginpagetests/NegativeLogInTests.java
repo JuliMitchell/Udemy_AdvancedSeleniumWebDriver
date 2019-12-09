@@ -1,8 +1,8 @@
 package com.herokuapp.theinternet.loginpagetests;
 
 import com.herokuapp.theinternet.base.BaseTest;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import com.herokuapp.theinternet.pages.LoginPage;
+import com.herokuapp.theinternet.pages.MainPage;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -15,22 +15,20 @@ public class NegativeLogInTests extends BaseTest {
 		log.info("Starting negativeTest");
 
 		// open main page
-		String url = "http://the-internet.herokuapp.com/";
-		driver.get(url);
+		MainPage mainPage = new MainPage(driver, log);
+		mainPage.openPage();
 		log.info("Main page is opened.");
 
 		// Click on Form Authentication link
-		driver.findElement(By.linkText("Form Authentication")).click();
+		LoginPage loginPage = mainPage.clickFormAuthenticationLink();
 
 		// enter username and password
-		driver.findElement(By.id("username")).sendKeys(username);
-		driver.findElement(By.id("password")).sendKeys(password);
-
 		// push log in button
-		driver.findElement(By.className("radius")).click();
+		loginPage.negativeLogIn(username, password);
 
 		// Verification
-		String actualErrorMessage = driver.findElement(By.id("flash")).getText();
+		loginPage.waitForErrorMessage();
+		String actualErrorMessage = loginPage.getErrorMessage();
 		Assert.assertTrue(actualErrorMessage.contains(expectedErrorMessage),
 				"actualErrorMessage does not contain expectedErrorMessage\nexpectedErrorMessage: "
 						+ expectedErrorMessage + "\nactualErrorMessage: " + actualErrorMessage);
