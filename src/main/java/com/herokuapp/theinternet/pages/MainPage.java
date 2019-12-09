@@ -10,6 +10,7 @@ public class MainPage extends BasePage {
 
     private By formAuthenticationLinkLocator = By.linkText("Form Authentication");
     private By checkboxesLinkLocator = By.linkText("Checkboxes");
+    private By dropdownLinkLocator = By.linkText("Dropdown");
 
     public MainPage(WebDriver driver, Logger log){
         super(driver, log);
@@ -31,6 +32,12 @@ public class MainPage extends BasePage {
         log.info("Clicking Checkboxes link on Main Page");
         click(checkboxesLinkLocator);
         return new CheckboxesPage(driver, log);
+    }
+
+    public DropdownPage clickDropdownLink(){
+        log.info("Clicking Dropdown link on Main Page");
+        click(dropdownLinkLocator);
+        return  new DropdownPage(driver, log);
     }
 
 }
