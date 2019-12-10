@@ -93,4 +93,9 @@ public class BasePage {
     }
 
     public String getCurrentPageSource() { return driver.getPageSource(); }
+
+    protected void switchToFrame(By locator){
+        driver.switchTo().frame(find(locator));
+    }
+
 }
