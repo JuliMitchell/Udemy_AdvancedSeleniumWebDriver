@@ -9,6 +9,7 @@ public class JSAlertPage extends BasePage {
 
     private By jsAlertButtonLocator = By.xpath("//button[text() = 'Click for JS Alert']");
     private By jsConfirmButtonLocator = By.xpath("//button[text() = 'Click for JS Confirm']");
+    private By jsPromptButtonLocator = By.xpath("//button[text() = 'Click for JS Prompt']");
     private By resultTextLocator = By.id("result");
 
     public JSAlertPage(WebDriver driver, Logger log){
@@ -24,6 +25,11 @@ public class JSAlertPage extends BasePage {
     public void clickJSConfirm(){
         log.info("Clicking 'Click for JS Confirm' button on JavaScript Alerts page");
         click(jsConfirmButtonLocator);
+    }
+
+    public void clickJSPrompt(){
+        log.info("Clicking 'Click for JS Prompt' button on JavaScript Alerts page");
+        click(jsPromptButtonLocator);
     }
 
     //Alert actions
@@ -53,6 +59,9 @@ public class JSAlertPage extends BasePage {
         return resultText;
     }
 
-
+    public void writeOnAlert(String text){
+        Alert alert = switchToAlert();
+        alert.sendKeys(text);
+    }
 
 }

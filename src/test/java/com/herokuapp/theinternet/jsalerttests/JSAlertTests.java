@@ -3,6 +3,7 @@ package com.herokuapp.theinternet.jsalerttests;
 import com.herokuapp.theinternet.base.TestUtilities;
 import com.herokuapp.theinternet.pages.JSAlertPage;
 import com.herokuapp.theinternet.pages.MainPage;
+import javafx.scene.control.Alert;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -59,5 +60,46 @@ public class JSAlertTests extends TestUtilities {
         jsAlertPage.rejectAlert();
 
         Assert.assertTrue(jsAlertPage.getResultText().contains("You clicked: Cancel"), "Result text isn't correct");
+    }
+
+    @Test
+    public void acceptJSPromptWithoutInput(){
+        MainPage mainPage = new MainPage(driver, log);
+        mainPage.openPage();
+
+        JSAlertPage jsAlertPage = mainPage.clickJSAlertLink();
+
+        jsAlertPage.clickJSPrompt();
+
+        String alertText = jsAlertPage.getAlertText();
+        Assert.assertTrue(alertText.contains("I am a JS prompt"), "Alert text isn't correct");
+
+        String text = "";
+        jsAlertPage.writeOnAlert(text);
+
+        jsAlertPage.acceptAlert();
+
+        String resultText = jsAlertPage.getResultText();
+        Assert.assertTrue(resultText.contains("You entered:"), "Result text isn't correct");
+    }
+
+    @Test
+    public void acceptJSPromptWithInput(){
+        MainPage mainPage = new MainPage(driver, log);
+        mainPage.openPage();
+        JSAlertPage jsAlertPage = mainPage.clickJSAlertLink();
+
+        jsAlertPage.clickJSPrompt();
+
+        String alertText = jsAlertPage.getAlertText();
+        Assert.assertTrue(alertText.contains("I am a JS prompt"), "Alert text isn't correct");
+
+        String text = "I'm the alert text";
+        jsAlertPage.writeOnAlert(text);
+
+        jsAlertPage.acceptAlert();
+
+        String resultText = jsAlertPage.getResultText();
+        Assert.assertTrue(resultText.contains("You entered: " + text), "dResult text isn't correct");
     }
 }
