@@ -3,7 +3,6 @@ package com.herokuapp.theinternet.jsalerttests;
 import com.herokuapp.theinternet.base.TestUtilities;
 import com.herokuapp.theinternet.pages.JSAlertPage;
 import com.herokuapp.theinternet.pages.MainPage;
-import javafx.scene.control.Alert;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -121,5 +120,26 @@ public class JSAlertTests extends TestUtilities {
 
         String resultText = jsAlertPage.getResultText();
         Assert.assertTrue(resultText.contains("You entered: null"), "Result text isn't correct");
+    }
+
+    @Test
+    public void rejectJSPromptWithText(){
+        MainPage mainPage = new MainPage(driver, log);
+        mainPage.openPage();
+        JSAlertPage jsAlertPage = mainPage.clickJSAlertLink();
+
+        jsAlertPage.clickJSPrompt();
+
+        String alertText = jsAlertPage.getAlertText();
+        Assert.assertTrue(alertText.contains("I am a JS prompt"), "Alert text isn't correct");
+
+        String text = "I'm the alert text";
+        jsAlertPage.writeOnAlert(text);
+
+        jsAlertPage.rejectAlert();
+
+        String resultText = jsAlertPage.getResultText();
+        Assert.assertTrue(resultText.contains("You entered: null"), "Result text isn't correct");
+
     }
 }
