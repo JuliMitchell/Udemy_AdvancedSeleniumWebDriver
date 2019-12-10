@@ -13,6 +13,8 @@ public class MainPage extends BasePage {
     private By dropdownLinkLocator = By.linkText("Dropdown");
     private By jsAlertLinkLocator = By.linkText("JavaScript Alerts");
     private By multipleWindowsLinkLocator = By.linkText("Multiple Windows");
+    private By WYSIWYGEditorLinkLocator = By.linkText("WYSIWYG Editor");
+
 
     public MainPage(WebDriver driver, Logger log){
         super(driver, log);
@@ -52,6 +54,12 @@ public class MainPage extends BasePage {
         log.info("Clicking Multiple Windows link on Main Page");
         click(multipleWindowsLinkLocator);
         return new WindowsPage(driver, log);
+    }
+
+    public IFramePage clickWYSIWYGEditorLink(){
+        log.info("Clicking WYSIWYG Editor link on Main Page");
+        click(WYSIWYGEditorLinkLocator);
+        return new IFramePage(driver, log);
     }
 
 }
