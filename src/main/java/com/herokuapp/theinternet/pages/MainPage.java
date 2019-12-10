@@ -11,6 +11,7 @@ public class MainPage extends BasePage {
     private By formAuthenticationLinkLocator = By.linkText("Form Authentication");
     private By checkboxesLinkLocator = By.linkText("Checkboxes");
     private By dropdownLinkLocator = By.linkText("Dropdown");
+    private By jsAlertLinkLocator = By.linkText("JavaScript Alerts");
 
     public MainPage(WebDriver driver, Logger log){
         super(driver, log);
@@ -37,7 +38,13 @@ public class MainPage extends BasePage {
     public DropdownPage clickDropdownLink(){
         log.info("Clicking Dropdown link on Main Page");
         click(dropdownLinkLocator);
-        return  new DropdownPage(driver, log);
+        return new DropdownPage(driver, log);
+    }
+
+    public JSAlertPage clickJSAlertLink(){
+        log.info("Clicking JavaScript Alerts link on Main Page");
+        click(jsAlertLinkLocator);
+        return new JSAlertPage(driver, log);
     }
 
 }
