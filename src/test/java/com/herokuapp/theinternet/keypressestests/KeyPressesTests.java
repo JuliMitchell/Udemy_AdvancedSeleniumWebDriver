@@ -33,4 +33,17 @@ public class KeyPressesTests extends TestUtilities {
         String resultText = keyPressesPage.getResultText();
         Assert.assertTrue(resultText.equals("You entered: SHIFT"), "Result text isn't correct");
     }
+
+    @Test
+    public void pressTabButton(){
+        MainPage mainPage = new MainPage(driver, log);
+        mainPage.openPage();
+
+        KeyPressesPage keyPressesPage = mainPage.clickKeyPressesLink();
+
+        keyPressesPage.pressKey(Keys.TAB);
+
+        String resultText = keyPressesPage.getResultText();
+        Assert.assertTrue(resultText.equals("You entered: TAB"), "Result text isn't correct");
+    }
 }
