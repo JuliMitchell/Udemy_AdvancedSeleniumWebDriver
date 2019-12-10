@@ -14,6 +14,7 @@ public class MainPage extends BasePage {
     private By jsAlertLinkLocator = By.linkText("JavaScript Alerts");
     private By multipleWindowsLinkLocator = By.linkText("Multiple Windows");
     private By WYSIWYGEditorLinkLocator = By.linkText("WYSIWYG Editor");
+    private By keyPressesLinkLocator = By.linkText("Key Presses");
 
 
     public MainPage(WebDriver driver, Logger log){
@@ -60,6 +61,12 @@ public class MainPage extends BasePage {
         log.info("Clicking WYSIWYG Editor link on Main Page");
         click(WYSIWYGEditorLinkLocator);
         return new IFramePage(driver, log);
+    }
+
+    public KeyPressesPage clickKeyPressesLink(){
+        log.info("Clicking Key Presses link on Main Page");
+        click(keyPressesLinkLocator);
+        return new KeyPressesPage(driver, log);
     }
 
 }
