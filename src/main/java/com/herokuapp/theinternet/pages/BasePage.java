@@ -3,6 +3,7 @@ package com.herokuapp.theinternet.pages;
 import com.herokuapp.theinternet.base.BaseTest;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -101,6 +102,11 @@ public class BasePage {
 
     protected void pressKey(By locator, Keys key){
         find(locator).sendKeys(key);
+    }
+
+    public void pressKeyWithActions(Keys key){
+        Actions actions = new Actions(driver);
+        actions.sendKeys(key).build().perform();
     }
 
 }
