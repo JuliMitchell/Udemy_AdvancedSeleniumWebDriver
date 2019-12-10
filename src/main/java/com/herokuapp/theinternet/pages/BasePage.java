@@ -7,7 +7,9 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class BasePage {
 
@@ -66,7 +68,29 @@ public class BasePage {
         }
     }
 
+    protected void switchToOtherPage(String pageTitle){
+        String firstWindow = driver.getWindowHandle();
+
+        Set<String> allWindows = driver.getWindowHandles();
+        Iterator<String> windowsIterator = allWindows.iterator();
+
+        while(windowsIterator.hasNext()){
+            String windowHandle = windowsIterator.next().toString();
+            if(!windowHandle.equals(firstWindow)){
+                driver.switchTo().window(windowHandle);
+                if(getCurrentWindowTitle().equals(pageTitle)){
+                    break;
+                }
+            }
+        }
+
+    }
+
+    public String getCurrentWindowTitle(){ return driver.getTitle(); }
+
     public String getBrowserUrl(){
         return driver.getCurrentUrl();
     }
+
+    public String getCurrentPageSource() { return driver.getPageSource(); }
 }
