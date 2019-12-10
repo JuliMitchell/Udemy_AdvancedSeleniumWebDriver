@@ -102,4 +102,24 @@ public class JSAlertTests extends TestUtilities {
         String resultText = jsAlertPage.getResultText();
         Assert.assertTrue(resultText.contains("You entered: " + text), "dResult text isn't correct");
     }
+
+    @Test
+    public void rejectJSPromptWithoutInput(){
+        MainPage mainPage = new MainPage(driver, log);
+        mainPage.openPage();
+        JSAlertPage jsAlertPage = mainPage.clickJSAlertLink();
+
+        jsAlertPage.clickJSPrompt();
+
+        String alertText = jsAlertPage.getAlertText();
+        Assert.assertTrue(alertText.contains("I am a JS prompt"), "Alert text isn't correct");
+
+        String text = "";
+        jsAlertPage.writeOnAlert(text);
+
+        jsAlertPage.rejectAlert();
+
+        String resultText = jsAlertPage.getResultText();
+        Assert.assertTrue(resultText.contains("You entered: null"), "Result text isn't correct");
+    }
 }
