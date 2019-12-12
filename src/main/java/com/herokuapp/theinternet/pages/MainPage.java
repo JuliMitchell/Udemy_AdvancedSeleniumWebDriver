@@ -16,7 +16,7 @@ public class MainPage extends BasePage {
     private By WYSIWYGEditorLinkLocator = By.linkText("WYSIWYG Editor");
     private By keyPressesLinkLocator = By.linkText("Key Presses");
     private By fileUploadLinkLocator = By.linkText("File Upload");
-
+    private By infiniteScrollLinkLocator = By.linkText("Infinite Scroll");
 
     public MainPage(WebDriver driver, Logger log){
         super(driver, log);
@@ -76,4 +76,9 @@ public class MainPage extends BasePage {
         return new FileUploaderPage(driver, log);
     }
 
+    public InfiniteScrollPage clickInfiniteScrollLink(){
+        log.info("Clicking Infinite Scroll link on Main Page");
+        click(infiniteScrollLinkLocator);
+        return new InfiniteScrollPage(driver, log);
+    }
 }
