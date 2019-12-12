@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 
 public class DragAndDropPage extends BasePage {
 
-    private By squareALocator = By.id("column-a");
-    private By squareBLocator = By.id("column-b");
+    private By square1Locator = By.id("column-a");
+    private By square2Locator = By.id("column-b");
 
 
     public DragAndDropPage(WebDriver driver, Logger log){
@@ -15,7 +15,15 @@ public class DragAndDropPage extends BasePage {
     }
 
     public void dragAtoB(){
-        dragAndDrop(find(squareALocator), find(squareBLocator));
+        dragAndDrop(find(square1Locator), find(square2Locator));
+    }
+
+    public String getValueSquare1(){
+        return find(square1Locator).getText();
+    }
+
+    public String getValueSquare2(){
+        return find(square2Locator).getText();
     }
 
 }
