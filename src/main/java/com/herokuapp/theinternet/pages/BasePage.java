@@ -109,4 +109,9 @@ public class BasePage {
         actions.sendKeys(key).build().perform();
     }
 
+    public void scrollToBottom(){
+        log.info("Scrolling to the bottom of the page");
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+        javascriptExecutor.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+    }
 }
