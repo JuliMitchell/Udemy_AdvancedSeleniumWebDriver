@@ -41,7 +41,7 @@ public class KeyPressesTests extends TestUtilities {
 
         KeyPressesPage keyPressesPage = mainPage.clickKeyPressesLink();
 
-        keyPressesPage.pressKey(Keys.TAB);
+        keyPressesPage.pressKeyWithActions(Keys.TAB);
 
         String resultText = keyPressesPage.getResultText();
         Assert.assertTrue(resultText.equals("You entered: TAB"), "Result text isn't correct");
