@@ -17,6 +17,7 @@ public class MainPage extends BasePage {
     private By keyPressesLinkLocator = By.linkText("Key Presses");
     private By fileUploadLinkLocator = By.linkText("File Upload");
     private By infiniteScrollLinkLocator = By.linkText("Infinite Scroll");
+    private By dragAndDropLinkLocator = By.linkText("Drag and Drop");
 
     public MainPage(WebDriver driver, Logger log){
         super(driver, log);
@@ -80,5 +81,11 @@ public class MainPage extends BasePage {
         log.info("Clicking Infinite Scroll link on Main Page");
         click(infiniteScrollLinkLocator);
         return new InfiniteScrollPage(driver, log);
+    }
+
+    public DragAndDropPage clickDragAndDropLink(){
+        log.info("Clicking Drag and Drop link on Main Page");
+        click(dragAndDropLinkLocator);
+        return new DragAndDropPage(driver, log);
     }
 }
