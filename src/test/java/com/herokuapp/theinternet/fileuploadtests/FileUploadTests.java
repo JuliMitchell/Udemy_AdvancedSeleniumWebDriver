@@ -25,4 +25,19 @@ public class FileUploadTests extends TestUtilities {
         Assert.assertTrue(fileUploadedName.equals(fileName), "File name isn't correct");
 
     }
+
+    @Test
+    public void uploadWithoutFile(){
+        MainPage mainPage = new MainPage(driver, log);
+        mainPage.openPage();
+
+        FileUploaderPage fileUploaderPage = mainPage.clickFileUploadLink();
+
+        FileUploadedPage fileUploadedPage = fileUploaderPage.clickUploadButton();
+
+        String errorMessage = fileUploadedPage.getErrorMessageText();
+
+        Assert.assertTrue(errorMessage.equals("Internal Server Error"), "Error message text isn't correct");
+
+    }
 }
