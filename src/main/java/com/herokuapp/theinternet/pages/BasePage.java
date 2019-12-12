@@ -137,4 +137,9 @@ public class BasePage {
                 + "var source = arguments[0];\n" + "var destination = arguments[1];\n"
                 + "simulateHTML5DragAndDrop(source,destination);", from, to);
     }
+
+    public void hoverElement(WebElement element){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).build().perform();
+    }
 }
