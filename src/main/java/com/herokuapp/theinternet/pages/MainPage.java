@@ -19,6 +19,7 @@ public class MainPage extends BasePage {
     private By infiniteScrollLinkLocator = By.linkText("Infinite Scroll");
     private By dragAndDropLinkLocator = By.linkText("Drag and Drop");
     private By hoversLinkLocator = By.linkText("Hovers");
+    private By horizontalSliderLinkLocator = By.linkText("Horizontal Slider");
 
     public MainPage(WebDriver driver, Logger log){
         super(driver, log);
@@ -94,5 +95,11 @@ public class MainPage extends BasePage {
         log.info("Clicking Hovers link on the Main Page");
         click(hoversLinkLocator);
         return new HoversPage(driver, log);
+    }
+
+    public HorizontalSliderPage clickHorizontalSliderLink(){
+        log.info("Clicking Horizontal Slider link on the Main Page");
+        click(horizontalSliderLinkLocator);
+        return new HorizontalSliderPage(driver, log);
     }
 }
