@@ -9,14 +9,15 @@ import org.testng.annotations.Test;
 
 public class FileUploadTests extends TestUtilities {
 
-    @Test
-    public void uploadWithFile(){
+    @Test(dataProvider = "files")
+    public void uploadWithFile(int testNumber, String fileName){
+        log.info("Starting test #" + testNumber + " with file '" + fileName + "'");
+
         MainPage mainPage = new MainPage(driver, log);
         mainPage.openPage();
 
         FileUploaderPage fileUploaderPage = mainPage.clickFileUploadLink();
 
-        String fileName = "data.png";
         fileUploaderPage.selectFile(fileName);
 
         FileUploadedPage fileUploadedPage = fileUploaderPage.clickUploadButton();
