@@ -5,11 +5,13 @@ import com.herokuapp.theinternet.pages.JSAlertPage;
 import com.herokuapp.theinternet.pages.MainPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 public class JSAlertTests extends TestUtilities {
 
     @Test
     public void acceptJSAlert(){
+        SoftAssert softAssert = new SoftAssert();
 
         MainPage mainPage = new MainPage(driver, log);
         mainPage.openPage();
@@ -18,12 +20,14 @@ public class JSAlertTests extends TestUtilities {
 
         jsAlertPage.clickJSAlert();
 
-        String alertText = jsAlertPage.getAlertText();
-        Assert.assertTrue(alertText.contains("I am a JS Alert"), "Alert text isn't correct");
+        String alertText = jsAlertPage.getAlertText()  + "[FAIL]";
+        softAssert.assertTrue(alertText.equals("I am a JS Alert"), "Alert text isn't correct");
 
         jsAlertPage.acceptAlert();
 
-        Assert.assertTrue(jsAlertPage.getResultText().contains("You successfuly clicked an alert"), "Result text isn't correct.");
+        softAssert.assertTrue(jsAlertPage.getResultText().equals("You successfuly clicked an alert"), "Result text isn't correct.");
+
+        softAssert.assertAll();
     }
 
     @Test
