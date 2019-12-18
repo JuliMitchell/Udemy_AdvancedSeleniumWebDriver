@@ -30,7 +30,7 @@
 			</class>
 		</classes>
 	</test>
-	-->
+
 	<test name="NegativePasswordTest-CH1">
 		<parameter name="username" value="tomsmith"></parameter>
 		<parameter name="password" value="incorrectPassword"></parameter>
@@ -41,7 +41,7 @@
 			</class>
 		</classes>
 	</test>
-	<!--
+
 	<test name="NegativePasswordTest-FF">
 		<parameter name="username" value="tomsmith"></parameter>
 		<parameter name="password" value="incorrectPassword"></parameter>
