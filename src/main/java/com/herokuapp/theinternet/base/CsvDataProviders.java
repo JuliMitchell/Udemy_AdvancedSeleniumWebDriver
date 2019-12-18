@@ -37,7 +37,7 @@ public class CsvDataProviders {
             }
             reader.close();
         } catch (FileNotFoundException e) {
-            throw new RuntimeException("File was not found. \n");
+            throw new RuntimeException("File " + file + " was not found. \n");
         } catch (IOException e) {
             throw new RuntimeException("Could not read file");
         }
