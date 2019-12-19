@@ -20,6 +20,7 @@ public class MainPage extends BasePage {
     private By dragAndDropLinkLocator = By.linkText("Drag and Drop");
     private By hoversLinkLocator = By.linkText("Hovers");
     private By horizontalSliderLinkLocator = By.linkText("Horizontal Slider");
+    private By jsOnloadEventError = By.linkText("JavaScript onload event error");
 
     public MainPage(WebDriver driver, Logger log){
         super(driver, log);
@@ -101,5 +102,11 @@ public class MainPage extends BasePage {
         log.info("Clicking Horizontal Slider link on the Main Page");
         click(horizontalSliderLinkLocator);
         return new HorizontalSliderPage(driver, log);
+    }
+
+    public JSOnloadEventErrorPage clickJSOnloadEventErrorLink(){
+        log.info("Clicking JS Onload Event Error link on Main Page");
+        click(jsOnloadEventError);
+        return new JSOnloadEventErrorPage(driver, log);
     }
 }
