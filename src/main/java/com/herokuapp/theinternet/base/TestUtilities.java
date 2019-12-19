@@ -47,7 +47,7 @@ public class TestUtilities extends BaseTest{
                 + File.separator + testName
                 + File.separator + testMethodName
                 + File.separator + getSystemTime()
-                + " " + file + ".png";
+                + " " + fileName + ".png";
         try{
             FileUtils.copyFile(file, new File(path));
         } catch (IOException e){
