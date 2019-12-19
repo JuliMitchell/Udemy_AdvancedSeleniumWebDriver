@@ -8,15 +8,21 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
+import java.lang.reflect.Method;
+
 
 public class BaseTest {
 
     public WebDriver driver;
     protected Logger log;
 
+    protected String testSuiteName;
+    protected String testName;
+    protected String testMethodName;
+
     @Parameters({ "browser" })
     @BeforeMethod(alwaysRun = true)
-    public void setUp(@Optional("chrome") String browser, ITestContext testContext) {
+    public void setUp(Method method, @Optional("chrome") String browser, ITestContext testContext) {
 
         String testName = testContext.getCurrentXmlTest().getName();
         log = LogManager.getLogger(testName);
@@ -31,6 +37,10 @@ public class BaseTest {
         }
 
         driver.manage().window().maximize();
+
+        this.testSuiteName = testContext.getSuite().getName();
+        this.testName = testName;
+        this.testMethodName = method.getName();
     }
 
 
