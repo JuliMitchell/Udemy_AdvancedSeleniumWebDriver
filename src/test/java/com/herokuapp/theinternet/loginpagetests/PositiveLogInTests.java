@@ -16,9 +16,11 @@ public class PositiveLogInTests extends TestUtilities {
 		// open main page
 		MainPage mainPage = new MainPage(driver, log);
 		mainPage.openPage();
+		takeScreenshot("MainPage opened");
 
 		// Click on Form Authentication link
 		LoginPage loginPage = mainPage.clickFormAuthenticationLink();
+		takeScreenshot("Secure Area Page opened");
 
 		// enter username and password
 		// push log in button
@@ -40,5 +42,6 @@ public class PositiveLogInTests extends TestUtilities {
 		Assert.assertTrue(actualSuccessMessage.contains(expectedSuccessMessage),
 				"actualSuccessMessage does not contain expectedSuccessMessage\nexpectedSuccessMessage: "
 						+ expectedSuccessMessage + "\nactualSuccessMessage: " + actualSuccessMessage);
+		takeScreenshot("Result viewed");
 	}
 }
